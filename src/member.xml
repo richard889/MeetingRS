@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+   
+    <package name="member" extends="struts-default" namespace="/member">
+     	<action name="memberqry" class="com.MeetingSrv.controller.MemberController" method="QryList">
+        	<result name="qryok" type="dispatcher">/WEB-INF/member/memberqry.jsp</result>
+        </action>
+    	<action name="memberadd" class="com.MeetingSrv.controller.MemberController" >
+        	<result name="success" type="dispatcher">/WEB-INF/member/memberadd.jsp</result>
+        </action>
+    	<action name="addvalid" class="com.MeetingSrv.controller.MemberController" method="valid">
+        	<result name="validok" type="chain">addsave</result>
+        	<result name="input" type="dispatcher">/WEB-INF/member/memberadd.jsp</result>
+        </action>         
+    	<action name="addsave" class="com.MeetingSrv.controller.MemberController" method="AddDAO">
+        	<result name="addok" type="chain">memberqry</result>
+        </action>               
+    </package>
+
+    
+</struts>
+    
